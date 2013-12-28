@@ -704,6 +704,9 @@ endif
 FRAMEWORK_MANIFEST_FILE := system/libhidl/manifest.xml
 FRAMEWORK_COMPATIBILITY_MATRIX_FILE := hardware/interfaces/compatibility_matrix.xml
 
+# Rules for QCOM targets
+include vendor/cm/build/core/qcom_target.mk
+
 # ###############################################################
 # Set up final options.
 # ###############################################################

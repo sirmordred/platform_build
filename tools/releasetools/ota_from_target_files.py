@@ -328,13 +328,12 @@ def GetImage(which, tmpdir):
   return sparse_img.SparseImage(path, mappath, clobbered_blocks)
 
 def CopyInstallTools(output_zip):
-  oldcwd = os.getcwd()
-  os.chdir(os.getenv('OUT'))
-  for root, subdirs, files in os.walk("install"):
-    for f in files:
-      p = os.path.join(root, f)
-      output_zip.write(p, p)
-  os.chdir(oldcwd)
+  install_path = os.path.join(OPTIONS.input_tmp, "INSTALL")
+  for root, subdirs, files in os.walk(install_path):
+     for f in files:
+      install_source = os.path.join(root, f)
+      install_target = os.path.join("install", os.path.relpath(root, install_path), f)
+      output_zip.write(install_source, install_target)
 
 def AddCompatibilityArchive(target_zip, output_zip, system_included=True,
                             vendor_included=True):

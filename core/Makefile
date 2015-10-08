@@ -973,6 +973,15 @@ $(recovery_ramdisk): $(MKBOOTFS) $(MINIGZIP) $(RECOVERYIMAGE_EXTRA_DEPS) \
 		$(RECOVERY_INSTALL_OTA_KEYS)
 		$(call build-recoveryimage-target, $@)
 
+<<<<<<< HEAD
+=======
+ifndef BOARD_CUSTOM_BOOTIMG_MK
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(recovery_ramdisk) \
+		$(recovery_kernel)
+	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $@
+	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE))
+	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
+
 endif # BOARD_CUSTOM_BOOTIMG_MK
 
 $(RECOVERY_RESOURCE_ZIP): $(INSTALLED_RECOVERYIMAGE_TARGET)

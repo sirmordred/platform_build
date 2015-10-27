@@ -478,9 +478,6 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     # Stage 3/3: Make changes.
     script.Comment("Stage 3/3")
 
-  # Dump fingerprints
-  script.Print("Target: %s" % target_fp)
-
   script.Print("      _____  ___________")
   script.Print("  __ / / _ \/ ___/_  __/__ ___ ___ _  ")
   script.Print(" / // / // / /__  / / / -_) _ `/  ' \ ")

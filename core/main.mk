@@ -9,6 +9,10 @@ else
 SHELL := /bin/bash
 endif
 
+# Silent mode, suppress "including ../*name*.mk" for makefiles.
+# 0=disabled, 1=enabled
+SILENT := 1
+
 # this turns off the suffix rules built into make
 .SUFFIXES:
 
@@ -540,7 +544,12 @@ ifneq ($(dont_bother),true)
 subdir_makefiles := \
 	$(shell build/tools/findleaves.py $(FIND_LEAVES_EXCLUDES) $(subdirs) Android.mk)
 
+ifeq ($(SILENT),1)
+$(info Silent mode enabled, suppressing bothering infos :P)
+$(foreach mk, $(subdir_makefiles), $(eval include $(mk)))
+else
 $(foreach mk, $(subdir_makefiles), $(info including $(mk) ...)$(eval include $(mk)))
+endif
 
 endif # dont_bother
 

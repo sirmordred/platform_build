@@ -53,7 +53,7 @@ def mangle_default_prop(prop):
   # default to "adb". That might not the right policy there, but it's better
   # to be explicit.
   if not prop.get("persist.sys.usb.config"):
-    prop.put("persist.sys.usb.config", "none");
+    prop.put("persist.sys.usb.config", "none")
 
 def validate(prop):
   """Validate the properties.

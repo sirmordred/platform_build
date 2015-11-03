@@ -1532,6 +1532,8 @@ $(BUILT_TARGET_FILES_PACKAGE): \
 	$(hide) mkdir -p $(zip_root)/BOOTABLE_IMAGES
 	$(hide) $(ACP) $(INSTALLED_BOOTIMAGE_TARGET) $(zip_root)/BOOTABLE_IMAGES/
 	$(hide) $(ACP) $(INSTALLED_RECOVERYIMAGE_TARGET) $(zip_root)/BOOTABLE_IMAGES/
+	# "Install" folder
+	$(hide) $(call package_files-copy-root, $(OUT)/install, $(zip_root)/INSTALL)
 ifdef INSTALLED_KERNEL_TARGET
 	$(hide) $(ACP) $(INSTALLED_KERNEL_TARGET) $(zip_root)/RECOVERY/kernel
 endif

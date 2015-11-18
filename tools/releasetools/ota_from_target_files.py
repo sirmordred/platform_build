@@ -1663,8 +1663,8 @@ def main(argv):
                                  "no_fallback_to_full",
                                  "backup=",
                                  "override_device=",
-                                 "override_prop="
-                                 "stash_threshold=",
+                                 "override_prop=",
+                                 "stash_threshold="
                              ], extra_option_handler=option_handler)
 
   if len(args) != 2:

@@ -23,7 +23,6 @@ ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
     qcom_flags += -DQCOM_BSP
 
     TARGET_USES_QCOM_BSP := true
-    TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
     # Enable DirectTrack for legacy targets
     ifneq ($(filter msm7x30 msm8660 msm8960,$(TARGET_BOARD_PLATFORM)),)

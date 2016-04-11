@@ -319,7 +319,7 @@ endif
 
 user_variant := $(filter user userdebug,$(TARGET_BUILD_VARIANT))
 enable_target_debugging := true
-WITH_DEXPREOPT := false
+WITH_DEXPREOPT := true
 tags_to_install :=
 ifneq (,$(user_variant))
   # Target is secure in user builds.

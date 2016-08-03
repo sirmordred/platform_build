@@ -321,8 +321,9 @@ user_variant := $(filter user userdebug,$(TARGET_BUILD_VARIANT))
 enable_target_debugging := true
 tags_to_install :=
 ifneq (,$(user_variant))
-  # Target is secure in user builds.
+  # Target is not secure in user builds.
   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+  ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=0
 
   ifeq ($(user_variant),userdebug)
     # Pick up some extra useful tools

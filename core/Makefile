@@ -2616,7 +2616,7 @@ ifeq ($(build_ota_package),true)
 # OTA update package
 
 TODAY := $(shell date -u +%Y%m%d)
-NAME := AOSP-6.0-$(TODAY)-$(TARGET_DEVICE)
+NAME := AOSP-8.0-$(TODAY)-$(TARGET_DEVICE)
 INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(NAME).zip
 
 $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)

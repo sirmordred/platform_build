@@ -1382,7 +1382,7 @@ def main(argv):
     elif o in ("--no_fallback_to_full",):
       OPTIONS.fallback_to_full = False
     elif o in ("--backup"):
-      OPTIONS.backuptool = bool(a.lower() == 'true')
+      OPTIONS.backuptool = True
     elif o == "--stash_threshold":
       try:
         OPTIONS.stash_threshold = float(a)
@@ -1400,7 +1400,7 @@ def main(argv):
     elif o == "--extracted_input_target_files":
       OPTIONS.extracted_input = a
     elif o == "--backup":
-      OPTIONS.backuptool = bool(a.lower() == 'true')
+      OPTIONS.backuptool = True
     elif o == "--override_device":
       OPTIONS.override_device = a
     else:

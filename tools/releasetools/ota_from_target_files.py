@@ -823,11 +823,22 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Cleaning up...");
   script.AppendExtra('delete_recursive("/tmp/magisk");')
   script.Print("Installation Complete!");
+  script.ShowProgress(0.2, 10)
+  device_specific.FullOTA_InstallEnd()
+  if OPTIONS.extra_script is not None:
+    script.AppendExtra(OPTIONS.extra_script)
+  script.UnmountAll()
 else:
-    script.Print(" ")
-    script.Print("ROM does not have any root methid")
-    script.Print(" ")
+    script.Print(" ");
+    script.Print("ROM does not have any root method");
+    script.Print(" ");
     script.Print("Installation complete!");
+    script.ShowProgress(0.2, 10)
+    device_specific.FullOTA_InstallEnd()
+    if OPTIONS.extra_script is not None:
+    script.AppendExtra(OPTIONS.extra_script)
+    script.UnmountAll()
+
 
   if OPTIONS.wipe_user_data:
     script.ShowProgress(0.1, 10)

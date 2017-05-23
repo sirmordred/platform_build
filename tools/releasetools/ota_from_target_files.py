@@ -813,32 +813,28 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
-  if OPTIONS.info_dict.get("WITH_ROOT") == "true":
-#Magisk
-  script.Print("Extracting Magisk...");
-  script.AppendExtra('package_extract_dir("install/magisk", "/tmp/magisk");')
-  script.AppendExtra('run_program("/sbin/busybox", "unzip", "/tmp/magisk/Magisk.zip", "META-INF/com/google/android/update-binary", "-d", "/tmp/magisk");')
-  script.Print("Installing Magisk...");
-  script.AppendExtra('run_program("/sbin/busybox", "sh", "/tmp/magisk/META-INF/com/google/android/update-binary", "null", "1", "/tmp/magisk/Magisk.zip");')
-  script.Print("Cleaning up...");
-  script.AppendExtra('delete_recursive("/tmp/magisk");')
-  script.Print("Installation Complete!");
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
+
   if OPTIONS.extra_script is not None:
     script.AppendExtra(OPTIONS.extra_script)
   script.UnmountAll()
-else:
+
+  if OPTIONS.info_dict.get("with_root") == "true":
+    #Magisk
+    script.Print("Extracting Magisk...");
+    script.AppendExtra('package_extract_dir("install/magisk", "/tmp/magisk");')
+    script.AppendExtra('run_program("/sbin/busybox", "unzip", "/tmp/magisk/Magisk.zip", "META-INF/com/google/android/update-binary", "-d", "/tmp/magisk");')
+    script.Print("Installing Magisk...");
+    script.AppendExtra('run_program("/sbin/busybox", "sh", "/tmp/magisk/META-INF/com/google/android/update-binary", "null", "1", "/tmp/magisk/Magisk.zip");')
+    script.Print("Cleaning up...");
+    script.AppendExtra('delete_recursive("/tmp/magisk");')
+    script.Print("Installation Complete!");
+  else:
     script.Print(" ");
     script.Print("ROM does not have any root method");
     script.Print(" ");
     script.Print("Installation complete!");
-    script.ShowProgress(0.2, 10)
-    device_specific.FullOTA_InstallEnd()
-    if OPTIONS.extra_script is not None:
-    script.AppendExtra(OPTIONS.extra_script)
-    script.UnmountAll()
-
 
   if OPTIONS.wipe_user_data:
     script.ShowProgress(0.1, 10)

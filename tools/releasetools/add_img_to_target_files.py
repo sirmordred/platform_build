@@ -351,7 +351,7 @@ def AddUserdataExtra(output_zip, prefix="IMAGES/"):
 
   prebuilt_path = os.path.join(OPTIONS.input_tmp, prefix, "userdata_%s.img" % extra_name)
   if os.path.exists(prebuilt_path):
-    print "userdata_%s.img already exists in %s, no need to rebuild..." % (extra_name, prefix,)
+    print("userdata_%s.img already exists in %s, no need to rebuild..." % (extra_name, prefix,))
     return
 
   # We only allow yaffs to have a 0/missing partition_size.
@@ -360,7 +360,7 @@ def AddUserdataExtra(output_zip, prefix="IMAGES/"):
       not image_props.get("partition_size")):
     return
 
-  print "creating userdata_%s.img..." % extra_name
+  print("creating userdata_%s.img..." % extra_name)
 
   # The name of the directory it is making an image out of matters to
   # mkyaffs2image.  So we create a temp dir, and within it we create an

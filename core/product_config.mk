@@ -168,7 +168,7 @@ include $(BUILD_SYSTEM)/node_fns.mk
 include $(BUILD_SYSTEM)/product.mk
 include $(BUILD_SYSTEM)/device.mk
 
-# A Lineage build needs only the Lineage product makefiles.
+# A Jdc build needs only the Jdc product makefiles.
 ifneq ($(CUSTOM_BUILD),)
   all_product_configs := $(shell ls vendor/aosp/products/jdc_$(CUSTOM_BUILD).mk)
 else
